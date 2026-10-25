@@ -24,6 +24,8 @@ def main():
     output=ROOT/'artifacts'
     output.mkdir(exist_ok=True)
     (output/'test-output.txt').write_text(stream.getvalue(),encoding='utf-8')
+    if not result.wasSuccessful():
+        sys.stderr.write(stream.getvalue())
     fs=FAT12.open(ROOT/'data/demo.img')
     report={**metadata(),
             'tests_run':result.testsRun,'failures':len(result.failures),'errors':len(result.errors),
