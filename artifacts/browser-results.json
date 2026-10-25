@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "date_timezone": "Asia/Shanghai",
+  "generated_at_utc": "2026-10-25T00:19:35+00:00",
+  "version": "1.2.0",
+  "python": "3.13.7",
+  "system": "Windows",
+  "ok": true,
+  "checks": [
+    "allocation analysis and preview leave disk bytes unchanged",
+    "snapshot creation through UI",
+    "restore removes subsequent file and creates recovery point",
+    "fragmented chain links to FAT and data sector 37",
+    "dirty editor blocks navigation",
+    "narrow viewport has no page-level horizontal overflow",
+    "external FAT damage is diagnosed and recovered through UI",
+    "raw damaged protection point cannot be restored through UI",
+    "a mutation invalidates the visible compaction preview",
+    "confirmed UI compaction persists a healthy contiguous layout",
+    "read-only mode disables creation controls",
+    "read-only allocation preview cannot be applied"
+  ]
+}

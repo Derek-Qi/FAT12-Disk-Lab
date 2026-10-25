@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fat12-disk-lab"
+version = "1.2.0"
+description = "A byte-level FAT12 image workbench with safe persistence and a React interface"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+keywords = ["fat12", "filesystem", "disk-image", "operating-systems"]
+authors = [{name = "Derek Qi"}]
+
+[project.urls]
+Repository = "https://github.com/Derek-Qi/FAT12-Disk-Lab"
+Documentation = "https://github.com/Derek-Qi/FAT12-Disk-Lab/blob/main/README.md"
+Issues = "https://github.com/Derek-Qi/FAT12-Disk-Lab/issues"
+
+[project.scripts]
+fat12lab = "fat12lab.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["fat12lab*"]
+
+[tool.setuptools.package-data]
+fat12lab = ["static/*", "static/assets/*"]

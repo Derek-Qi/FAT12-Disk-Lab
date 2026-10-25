@@ -1,0 +1,109 @@
+test_analysis_is_readonly_and_reports_fragmentation_and_slack (test_allocation.AllocationTests.test_analysis_is_readonly_and_reports_fragmentation_and_slack) ... ok
+test_bad_cluster_marker_and_bytes_are_preserved (test_allocation.AllocationTests.test_bad_cluster_marker_and_bytes_are_preserved) ... ok
+test_compaction_preserves_contents_metadata_and_geometry_for_both_layouts (test_allocation.AllocationTests.test_compaction_preserves_contents_metadata_and_geometry_for_both_layouts) ... ok
+test_compaction_save_failure_rolls_back_memory_and_disk (test_allocation.AllocationTests.test_compaction_save_failure_rolls_back_memory_and_disk) ... ok
+test_competing_writer_is_not_overwritten (test_allocation.AllocationTests.test_competing_writer_is_not_overwritten) ... ok
+test_corruption_is_reported_and_compaction_is_refused (test_allocation.AllocationTests.test_corruption_is_reported_and_compaction_is_refused) ... ok
+test_expanded_nested_directory_dot_references_are_relocated (test_allocation.AllocationTests.test_expanded_nested_directory_dot_references_are_relocated) ... ok
+test_persisted_compaction_has_an_exact_restorable_protection_point (test_allocation.AllocationTests.test_persisted_compaction_has_an_exact_restorable_protection_point) ... ok
+test_plan_with_no_allocations_is_noop_and_creates_no_snapshot (test_allocation.AllocationTests.test_plan_with_no_allocations_is_noop_and_creates_no_snapshot) ... ok
+test_readonly_allows_analysis_and_preview_but_refuses_apply (test_allocation.AllocationTests.test_readonly_allows_analysis_and_preview_but_refuses_apply) ... ok
+test_seeded_preservation_and_idempotence_across_layouts (test_allocation.AllocationTests.test_seeded_preservation_and_idempotence_across_layouts) ... ok
+test_shared_shell_analysis_preview_and_apply (test_allocation.AllocationTests.test_shared_shell_analysis_preview_and_apply) ... ok
+test_stale_preview_is_rejected_without_mutation (test_allocation.AllocationTests.test_stale_preview_is_rejected_without_mutation) ... ok
+test_windows_literal_wrapper_resolves_to_native_executable (test_browser_cli.BrowserCliTests.test_windows_literal_wrapper_resolves_to_native_executable) ... ok
+test_windows_unknown_shell_wrapper_is_refused (test_browser_cli.BrowserCliTests.test_windows_unknown_shell_wrapper_is_refused) ... ok
+test_naive_receipt_timestamp_is_rejected (test_evidence.EvidenceTests.test_naive_receipt_timestamp_is_rejected) ... ok
+test_receipt_date_uses_client_timezone_and_keeps_utc_timestamp (test_evidence.EvidenceTests.test_receipt_date_uses_client_timezone_and_keeps_utc_timestamp) ... ok
+test_advisory_chs_fields_do_not_change_sector_offsets (test_filesystem.FilesystemTests.test_advisory_chs_fields_do_not_change_sector_offsets) ... ok
+test_boundaries_and_binary_round_trip (test_filesystem.FilesystemTests.test_boundaries_and_binary_round_trip) ... ok
+test_copy_independent_chain_and_duplicate_rejection (test_filesystem.FilesystemTests.test_copy_independent_chain_and_duplicate_rejection) ... ok
+test_cycle_bad_cluster_orphan_and_crosslink_detected (test_filesystem.FilesystemTests.test_cycle_bad_cluster_orphan_and_crosslink_detected) ... ok
+test_deleted_clusters_reused_and_fragmented_read (test_filesystem.FilesystemTests.test_deleted_clusters_reused_and_fragmented_read) ... ok
+test_deterministic_random_operations_against_memory_model (test_filesystem.FilesystemTests.test_deterministic_random_operations_against_memory_model) ... ok
+test_directory_growth_past_one_cluster (test_filesystem.FilesystemTests.test_directory_growth_past_one_cluster) ... ok
+test_empty_file_allocates_no_cluster (test_filesystem.FilesystemTests.test_empty_file_allocates_no_cluster) ... ok
+test_fat_packing_preserves_neighbor_and_sector_boundary (test_filesystem.FilesystemTests.test_fat_packing_preserves_neighbor_and_sector_boundary) ... ok
+test_format_geometry_and_signature (test_filesystem.FilesystemTests.test_format_geometry_and_signature) ... ok
+test_full_disk_and_overwrite_rollback (test_filesystem.FilesystemTests.test_full_disk_and_overwrite_rollback) ... ok
+test_invalid_names_and_geometry_rejected (test_filesystem.FilesystemTests.test_invalid_names_and_geometry_rejected) ... ok
+test_mirror_corruption_detected_and_mutation_refused (test_filesystem.FilesystemTests.test_mirror_corruption_detected_and_mutation_refused) ... ok
+test_move_directory_updates_parent_and_prevents_cycle (test_filesystem.FilesystemTests.test_move_directory_updates_parent_and_prevents_cycle) ... ok
+test_nested_directory_dotdot_and_nonempty_delete (test_filesystem.FilesystemTests.test_nested_directory_dotdot_and_nonempty_delete) ... ok
+test_persistence_and_save_failure_rollback (test_filesystem.FilesystemTests.test_persistence_and_save_failure_rollback) ... ok
+test_readonly_is_respected (test_filesystem.FilesystemTests.test_readonly_is_respected) ... ok
+test_rename_uses_same_chain (test_filesystem.FilesystemTests.test_rename_uses_same_chain) ... ok
+test_root_full_is_transactional (test_filesystem.FilesystemTests.test_root_full_is_transactional) ... ok
+test_utf8_and_case_insensitive_paths (test_filesystem.FilesystemTests.test_utf8_and_case_insensitive_paths) ... ok
+test_bad_parameters_and_host_io_disabled (test_filesystem.ShellTests.test_bad_parameters_and_host_io_disabled) ... ok
+test_commands_and_relative_paths (test_filesystem.ShellTests.test_commands_and_relative_paths) ... ok
+test_move_current_directory_and_ancestor_delete (test_filesystem.ShellTests.test_move_current_directory_and_ancestor_delete) ... ok
+test_touch_preserves_existing_and_binary_type_rejects (test_filesystem.ShellTests.test_touch_preserves_existing_and_binary_type_rejects) ... ok
+test_720kb_cross_cluster_io_and_directory_extension (test_layout_inspection.LayoutInspectionTests.test_720kb_cross_cluster_io_and_directory_extension) ... ok
+test_diff_counts_match_independent_byte_comparison (test_layout_inspection.LayoutInspectionTests.test_diff_counts_match_independent_byte_comparison) ... ok
+test_exact_directory_and_fat_decode (test_layout_inspection.LayoutInspectionTests.test_exact_directory_and_fat_decode) ... ok
+test_format_preserves_loaded_geometry_and_media (test_layout_inspection.LayoutInspectionTests.test_format_preserves_loaded_geometry_and_media) ... ok
+test_geometry_and_bytes_survive_failed_write (test_layout_inspection.LayoutInspectionTests.test_geometry_and_bytes_survive_failed_write) ... ok
+test_geometry_corruption_and_length_mismatch (test_layout_inspection.LayoutInspectionTests.test_geometry_corruption_and_length_mismatch) ... ok
+test_a_secret_in_an_allowed_file_blocks_export (test_public_release.PublicReleaseTests.test_a_secret_in_an_allowed_file_blocks_export) ... ok
+test_machine_specific_home_path_in_an_allowed_file_blocks_export (test_public_release.PublicReleaseTests.test_machine_specific_home_path_in_an_allowed_file_blocks_export) ... ok
+test_only_authored_source_and_selected_evidence_are_published (test_public_release.PublicReleaseTests.test_only_authored_source_and_selected_evidence_are_published) ... ok
+test_720kb_fat_range_prompt_matches_actual_layout (test_regressions.RegressionTests.test_720kb_fat_range_prompt_matches_actual_layout) ... ok
+test_dot_entries_must_be_first_and_unique (test_regressions.RegressionTests.test_dot_entries_must_be_first_and_unique) ... ok
+test_literal_backslashes_and_escaped_quotes_in_text (test_regressions.RegressionTests.test_literal_backslashes_and_escaped_quotes_in_text) ... ok
+test_same_size_layout_replacement_is_explicit (test_regressions.RegressionTests.test_same_size_layout_replacement_is_explicit) ... ok
+test_unquoted_host_path_import (test_regressions.RegressionTests.test_unquoted_host_path_import) ... ok
+test_unquoted_windows_image_path (test_regressions.RegressionTests.test_unquoted_windows_image_path) ... ok
+test_allocation_preview_apply_and_stale_plan_http (test_server.APITests.test_allocation_preview_apply_and_stale_plan_http) ... 127.0.0.1 - - [25/Oct/2026 08:19:37] "POST /api/defragment HTTP/1.1" 400 -
+ok
+test_binary_upload_and_sector (test_server.APITests.test_binary_upload_and_sector) ... ok
+test_command_write_read_download_and_persistence (test_server.APITests.test_command_write_read_download_and_persistence) ... ok
+test_decoded_entry_fat_and_readonly_byte_diff (test_server.APITests.test_decoded_entry_fat_and_readonly_byte_diff) ... ok
+test_mount_720kb_updates_geometry_and_persisted_image (test_server.APITests.test_mount_720kb_updates_geometry_and_persisted_image) ... ok
+test_mount_invalid_is_transactional (test_server.APITests.test_mount_invalid_is_transactional) ... 127.0.0.1 - - [25/Oct/2026 08:19:41] "POST /api/mount HTTP/1.1" 400 -
+ok
+test_mount_save_failure_restores_geometry_and_image (test_server.APITests.test_mount_save_failure_restores_geometry_and_image) ... 127.0.0.1 - - [25/Oct/2026 08:19:41] "POST /api/mount HTTP/1.1" 400 -
+ok
+test_origin_host_content_type_and_invalid_requests (test_server.APITests.test_origin_host_content_type_and_invalid_requests) ... 127.0.0.1 - - [25/Oct/2026 08:19:41] "GET /api/state HTTP/1.1" 403 -
+127.0.0.1 - - [25/Oct/2026 08:19:41] "GET /api/state HTTP/1.1" 403 -
+127.0.0.1 - - [25/Oct/2026 08:19:41] "POST /api/command HTTP/1.1" 400 -
+127.0.0.1 - - [25/Oct/2026 08:19:41] "GET /api/missing HTTP/1.1" 404 -
+127.0.0.1 - - [25/Oct/2026 08:19:41] "GET /api/sector?index=9999 HTTP/1.1" 400 -
+127.0.0.1 - - [25/Oct/2026 08:19:41] "POST /api/command HTTP/1.1" 400 -
+ok
+test_parallel_mutations_are_serialized (test_server.APITests.test_parallel_mutations_are_serialized) ... ok
+test_readonly_http_allocation_preview_and_apply_refusal (test_server.APITests.test_readonly_http_allocation_preview_and_apply_refusal) ... 127.0.0.1 - - [25/Oct/2026 08:19:46] "POST /api/defragment HTTP/1.1" 400 -
+ok
+test_readonly_http_state_and_mutation_refusal (test_server.APITests.test_readonly_http_state_and_mutation_refusal) ... 127.0.0.1 - - [25/Oct/2026 08:19:46] "POST /api/write HTTP/1.1" 400 -
+127.0.0.1 - - [25/Oct/2026 08:19:46] "POST /api/snapshot HTTP/1.1" 400 -
+ok
+test_reload_resolves_external_write_conflict (test_server.APITests.test_reload_resolves_external_write_conflict) ... 127.0.0.1 - - [25/Oct/2026 08:19:47] "POST /api/write HTTP/1.1" 409 -
+ok
+test_snapshot_and_restore_http_roundtrip (test_server.APITests.test_snapshot_and_restore_http_roundtrip) ... ok
+test_corrupt_payload_does_not_change_working_image (test_snapshots.SnapshotTests.test_corrupt_payload_does_not_change_working_image) ... ok
+test_format_creates_recovery_point_for_healthy_disk (test_snapshots.SnapshotTests.test_format_creates_recovery_point_for_healthy_disk) ... ok
+test_identifier_collision_preserves_existing_snapshot (test_snapshots.SnapshotTests.test_identifier_collision_preserves_existing_snapshot) ... ok
+test_metadata_rejects_non_boolean_restorable_flag (test_snapshots.SnapshotTests.test_metadata_rejects_non_boolean_restorable_flag) ... ok
+test_metadata_validation_rejects_inconsistent_size (test_snapshots.SnapshotTests.test_metadata_validation_rejects_inconsistent_size) ... ok
+test_readonly_can_list_but_cannot_create_or_restore (test_snapshots.SnapshotTests.test_readonly_can_list_but_cannot_create_or_restore) ... ok
+test_restore_exact_bytes_and_creates_recovery_point (test_snapshots.SnapshotTests.test_restore_exact_bytes_and_creates_recovery_point) ... ok
+test_restore_repairs_damaged_fat_and_preserves_raw_protection_point (test_snapshots.SnapshotTests.test_restore_repairs_damaged_fat_and_preserves_raw_protection_point) ... ok
+test_restore_save_failure_rolls_back_memory (test_snapshots.SnapshotTests.test_restore_save_failure_rolls_back_memory) ... ok
+test_snapshot_root_link_is_rejected_before_writing_or_listing (test_snapshots.SnapshotTests.test_snapshot_root_link_is_rejected_before_writing_or_listing) ... ok
+test_snapshot_shell_commands (test_snapshots.SnapshotTests.test_snapshot_shell_commands) ... ok
+test_stale_snapshot_is_refused (test_snapshots.SnapshotTests.test_stale_snapshot_is_refused) ... ok
+test_traversal_identifier_is_rejected (test_snapshots.SnapshotTests.test_traversal_identifier_is_rejected) ... ok
+test_create_never_overwrites_existing_image_by_default (test_storage.StorageTests.test_create_never_overwrites_existing_image_by_default) ... ok
+test_invalid_reload_keeps_previous_memory (test_storage.StorageTests.test_invalid_reload_keeps_previous_memory) ... ok
+test_lock_is_released_when_writer_process_dies (test_storage.StorageTests.test_lock_is_released_when_writer_process_dies) ... ok
+test_process_termination_after_replace_leaves_complete_new_image (test_storage.StorageTests.test_process_termination_after_replace_leaves_complete_new_image) ... ok
+test_process_termination_before_replace_preserves_previous_image (test_storage.StorageTests.test_process_termination_before_replace_preserves_previous_image) ... ok
+test_readonly_rejects_mutation_and_save (test_storage.StorageTests.test_readonly_rejects_mutation_and_save) ... ok
+test_reload_exposes_bpb_valid_damage_for_diagnosis_and_recovery (test_storage.StorageTests.test_reload_exposes_bpb_valid_damage_for_diagnosis_and_recovery) ... ok
+test_reload_reads_new_state_and_allows_next_write (test_storage.StorageTests.test_reload_reads_new_state_and_allows_next_write) ... ok
+test_stale_writer_cannot_overwrite_newer_image (test_storage.StorageTests.test_stale_writer_cannot_overwrite_newer_image) ... ok
+
+----------------------------------------------------------------------
+Ran 91 tests in 33.632s
+
+OK

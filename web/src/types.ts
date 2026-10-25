@@ -1,0 +1,13 @@
+export type Entry = {name:string; is_dir:boolean; size:number; cluster:number; attr:number; offset:number; modified:string}
+export type BPBField = {offset:number;length:number;field:string;raw:string;value:number}
+export type Disk = {info:{label:string; read_only:boolean; image_bytes:number; free_bytes:number; free_clusters:number; used_clusters:number; total_clusters:number; cluster_bytes:number; total_sectors:number; sectors_per_cluster:number; reserved_sectors:number; root_sector:number; data_sector:number; fat_sectors:number}; bpb:BPBField[]; path:string; entries:Entry[]; fat:number[]; check:{ok:boolean; files:number; directories:number; errors:string[]}}
+export type OpenFile = {entry:Entry; chain:number[]; content:string; is_text:boolean; raw_entry:{raw:string;attr_hex:string;attributes:string[];time_word:string;date_word:string;modified:string}}
+export type FatDetail = {offset:number;raw:string;formula:string;word:number;value:number;data_sector:number}
+export type Changes = {replaced:boolean;reason?:string;before_bytes?:number;after_bytes?:number;changed_bytes:number|null;changed_sector_count?:number;sectors:number[];regions:Record<string,number>;samples:{offset:number;before:string;after:string}[]}
+export type Log = {command:string; output:string; error?:boolean}
+export type Dialog = 'file'|'folder'|'rename'|'delete'|'format'|'mount'|null
+export type Snapshot = {id:string;label:string;created_at:string;image_bytes:number;sha256:string;restorable?:boolean;error?:string}
+export type AllocationSummary = {files:number;directories:number;logical_bytes:number;file_allocated_bytes:number;directory_allocated_bytes:number;slack_bytes:number;fragmented_files:number;fragmented_directories:number;file_extents:number;free_clusters:number;free_runs:number;largest_free_run:number;bad_clusters:number}
+export type AllocationObject = {path:string;is_dir:boolean;chain:number[];logical_bytes:number;allocated_bytes:number;slack_bytes:number;extents:number}
+export type Analysis = {schema_version:number;image_sha256:string;check:Disk['check'];cluster_bytes:number;summary:AllocationSummary|null;objects:AllocationObject[]}
+export type CompactionPlan = {schema_version:number;image_sha256:string;moved_clusters:number;mapping:{from:number;to:number}[];before:AllocationSummary;after:AllocationSummary}

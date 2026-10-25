@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.img -text
+*.png -text
+*.pdf -text
+*.pptx -text
+*.zip -text
+*.whl -text

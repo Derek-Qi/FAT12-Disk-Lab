@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "date_timezone": "Asia/Shanghai",
+  "generated_at_utc": "2026-10-24T16:47:29+00:00",
+  "version": "1.2.0",
+  "python": "3.13.7",
+  "system": "Windows",
+  "library": "pyfatfs 1.1.0",
+  "ok": true,
+  "checks": [
+    "pyfatfs reads /README.TXT: byte-identical",
+    "pyfatfs reads /DOCS/NOTES.TXT: byte-identical",
+    "pyfatfs reads /LAB/CHAIN.TXT: byte-identical",
+    "pyfatfs reads /LAB/KEEP.TXT: byte-identical",
+    "pyfatfs reads /LAB/EMPTY.TXT: byte-identical",
+    "pyfatfs reads /LAB/BYTES.BIN: byte-identical",
+    "Own reader reads directory and binary file created by pyfatfs",
+    "pyfatfs reads our file written into its disk",
+    "720 KiB / 1024-byte clusters: independent reader and writer roundtrip passed",
+    "1474560 bytes: independent reader checks every compacted file; post-compaction writer roundtrip passed",
+    "737280 bytes: independent reader checks every compacted file; post-compaction writer roundtrip passed"
+  ]
+}

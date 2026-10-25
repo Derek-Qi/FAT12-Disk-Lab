@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-25",
+  "date_timezone": "Asia/Shanghai",
+  "generated_at_utc": "2026-10-24T17:06:25+00:00",
+  "version": "1.2.0",
+  "python": "3.12.14",
+  "system": "Windows",
+  "wheel": "fat12_disk_lab-1.2.0-py3-none-any.whl",
+  "wheel_sha256": "ae63645a86c3403657a3b87f18b68aba35427591b2016e3938ed868b4bbbb4a3",
+  "ok": true,
+  "checks": [
+    "clean venv installation without runtime dependencies",
+    "installed console entry and snapshot roundtrip",
+    "installed allocation analysis and compaction",
+    "installed HTTP state in read-only mode",
+    "all referenced frontend assets served"
+  ]
+}
