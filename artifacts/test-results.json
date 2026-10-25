@@ -1,7 +1,7 @@
 {
   "date": "2026-10-25",
   "date_timezone": "Asia/Shanghai",
-  "generated_at_utc": "2026-10-25T02:48:01+00:00",
+  "generated_at_utc": "2026-10-25T02:50:50+00:00",
   "version": "1.2.0",
   "python": "3.13.7",
   "system": "Windows",
@@ -10,7 +10,7 @@
   "errors": 0,
   "skipped": 0,
   "ok": true,
-  "seconds": 36.552,
+  "seconds": 17.358,
   "demo_image_bytes": 1474560,
   "demo_check": {
     "ok": true,

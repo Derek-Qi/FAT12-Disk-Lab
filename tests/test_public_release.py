@@ -7,7 +7,8 @@ class PublicReleaseTests(unittest.TestCase):
     def test_only_authored_source_and_selected_evidence_are_published(self):
         from tools.public_release import public_files
         with tempfile.TemporaryDirectory() as folder:
-            root=Path(folder)
+            # The exporter returns canonical paths; Windows TEMP may use an 8.3 alias.
+            root=Path(folder).resolve()
             allowed=('README.md','fat12lab/filesystem.py','web/src/App.tsx','tests/test_storage.py',
                      'docs/architecture.md','artifacts/test-results.json','data/demo.img','tools/evidence.py')
             excluded=('.env','data/work.img','docs/技术报告.md','docs/superpowers/private.md',
