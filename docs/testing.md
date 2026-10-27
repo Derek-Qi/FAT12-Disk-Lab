@@ -28,6 +28,8 @@ The optional `agent-browser` CLI and its browser must be installed separately. T
 
 The v1.2.1 checks also exercise keyboard focus in delete/restore dialogs, unload protection registration, and stale editor saves. A conflicting save must preserve both the newer disk content and the browser draft. Native unload dialogs depend on browser activation rules; registering a handler is not a guarantee against all ways of closing a browser.
 
+The browser CI job uses the Chrome supplied by the pinned Ubuntu 24.04 runner image through `AGENT_BROWSER_EXECUTABLE_PATH`, avoiding a second browser/system-dependency installation. It prints the detected browser version and has a ten-minute job limit. The [runner software inventory](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md#browsers-and-drivers) documents that environment; local checks can still use agent-browser's own installed browser.
+
 ## Independent FAT implementation
 
 In an isolated development environment:
