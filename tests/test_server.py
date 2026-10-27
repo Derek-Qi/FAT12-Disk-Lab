@@ -1,4 +1,6 @@
 import base64
+import hashlib
+from concurrent.futures import ThreadPoolExecutor
 import http.client
 import json
 import tempfile
@@ -14,6 +16,35 @@ from test_layout_inspection import disk720
 
 
 class APITests(unittest.TestCase):
+    def test_stale_editor_save_is_rejected_without_overwriting_new_content(self):
+        self.fs.write_file('/STALE.TXT',b'original')
+        expected=hashlib.sha256(b'original').hexdigest()
+        status,_,_=self.request('/api/write',{'path':'/STALE.TXT','content':'newer edit'})
+        self.assertEqual(status,200)
+        before=bytes(self.fs.data)
+        status,_,_=self.request('/api/write',{'path':'/STALE.TXT','content':'stale edit','expected_content_sha256':expected})
+        self.assertEqual(status,409)
+        self.assertEqual(bytes(self.fs.data),before)
+        self.assertEqual(self.fs.read_file('/STALE.TXT'),b'newer edit')
+
+    def test_editor_digest_matches_download_and_valid_save_succeeds(self):
+        self.fs.write_file('/EDIT.TXT',b'original')
+        status,data,_=self.request('/api/file?path=/EDIT.TXT')
+        opened=json.loads(data)
+        self.assertEqual(opened.get('content_sha256'),hashlib.sha256(b'original').hexdigest())
+        status,_,_=self.request('/api/write',{'path':'/EDIT.TXT','content':'saved','expected_content_sha256':opened['content_sha256']})
+        self.assertEqual(status,200)
+        self.assertEqual(self.fs.read_file('/EDIT.TXT'),b'saved')
+
+    def test_write_rejects_non_text_content_and_malformed_digest(self):
+        self.fs.write_file('/TYPES.TXT',b'preserved')
+        before=bytes(self.fs.data)
+        for extra in ({'content':None},{'content':{'bad':'type'}},{'expected_content_sha256':'invalid'}):
+            with self.subTest(extra=extra):
+                status,_,_=self.request('/api/write',{'path':'/TYPES.TXT','content':'replacement',**extra})
+                self.assertEqual(status,400)
+                self.assertEqual(bytes(self.fs.data),before)
+
     @classmethod
     def setUpClass(cls):
         cls.temp=tempfile.TemporaryDirectory()
@@ -32,14 +63,15 @@ class APITests(unittest.TestCase):
         cls.temp.cleanup()
 
     def request(self,route,body=None,headers=None):
-        connection=http.client.HTTPConnection('127.0.0.1',self.port,timeout=10)
+        connection=http.client.HTTPConnection('127.0.0.1',self.port,timeout=30)
         actual_headers={'Content-Type':'application/json'}
         actual_headers.update(headers or {})
-        connection.request('POST' if body is not None else 'GET',route,json.dumps(body) if body is not None else None,actual_headers)
-        response=connection.getresponse()
-        result=(response.status,response.read(),dict(response.getheaders()))
-        connection.close()
-        return result
+        try:
+            connection.request('POST' if body is not None else 'GET',route,json.dumps(body) if body is not None else None,actual_headers)
+            response=connection.getresponse()
+            return response.status,response.read(),dict(response.getheaders())
+        finally:
+            connection.close()
 
     def test_command_write_read_download_and_persistence(self):
         status,data,_=self.request('/api/command',{'command':'write API.TXT "你好 API"','cwd':'/'})
@@ -78,15 +110,23 @@ class APITests(unittest.TestCase):
         self.assertEqual(self.request('/api/command',{'command':'export A.TXT C:/TEMP.TXT'})[0],400)
 
     def test_parallel_mutations_are_serialized(self):
-        results=[]
         def write(index):
-            results.append(self.request('/api/command',{'command':f'write T{index}.TXT "thread {index}"'})[0])
-        threads=[threading.Thread(target=write,args=(i,)) for i in range(8)]
-        for thread in threads:thread.start()
-        for thread in threads:thread.join()
+            return self.request('/api/command',{'command':f'write T{index}.TXT "thread {index}"'})[0]
+        # Observe worker exceptions directly; this is an integrity test, not a
+        # latency benchmark for a loaded Windows/CI machine.
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            results=list(pool.map(write,range(8)))
         self.assertEqual(results,[200]*8)
         self.assertTrue(self.fs.check()['ok'])
         for i in range(8):self.assertEqual(self.fs.read_file(f'/T{i}.TXT'),f'thread {i}'.encode())
+
+    def test_disconnected_client_does_not_trigger_a_second_error_response(self):
+        with patch.object(self.server.RequestHandlerClass,'_json',side_effect=ConnectionAbortedError('client disconnected')) as response:
+            with self.assertRaises(http.client.RemoteDisconnected):
+                self.request('/api/write',{'path':'/GONE.TXT','content':'committed'})
+            self.assertEqual(response.call_count,1)
+        self.assertEqual(FAT12.open(self.fs.path).read_file('/GONE.TXT'),b'committed')
+        self.assertTrue(self.fs.check()['ok'])
 
     def test_mount_720kb_updates_geometry_and_persisted_image(self):
         old=bytes(self.fs.data)

@@ -90,5 +90,17 @@ class LayoutInspectionTests(unittest.TestCase):
         self.assertEqual(fs.layout,layout)
         self.assertEqual(fs.read_file('/A.TXT'),b'original')
 
+    def test_diff_samples_cross_sector_boundaries_and_remain_bounded(self):
+        fs=FAT12.create();before=bytes(fs.data);start=fs.layout.data_sector*512
+        changed=list(range(start+510,start+530))+[start+1024+2*i for i in range(30)]
+        for offset in changed:fs.data[offset]=0xAA
+        result=disk_changes(before,fs)
+        self.assertEqual(result['changed_bytes'],50)
+        self.assertEqual(result['changed_sector_count'],3)
+        self.assertEqual(result['regions'],{'数据区':50})
+        self.assertEqual(len(result['samples']),16)
+        self.assertEqual(result['samples'][0],{'offset':start+510,'before':('00 '*16).strip(),'after':('AA '*16).strip()})
+        self.assertEqual(result['samples'][1],{'offset':start+526,'before':'00 00 00 00','after':'AA AA AA AA'})
+
 
 if __name__=='__main__':unittest.main()

@@ -451,8 +451,16 @@ class FAT12:
         return bytes(raw)
 
     def _empty_slot(self, directory: int) -> int:
-        for offset in self._slots(directory):
-            if self.data[offset] in (0, 0xE5):
+        slots = self._slots(directory)
+        for index, offset in enumerate(slots):
+            if self.data[offset] == 0:
+                # Bytes after 0x00 are unspecified on imported FAT volumes.
+                # Advance the terminator along the logical chain, which need
+                # not be physically contiguous. A full directory has no marker.
+                if index + 1 < len(slots):
+                    self.data[slots[index + 1]] = 0
+                return offset
+            if self.data[offset] == 0xE5:
                 return offset
         if directory == 0:
             raise FATError(f"根目录项已满（容量 {self.layout.root_entries} 项，卷标也占一项）")

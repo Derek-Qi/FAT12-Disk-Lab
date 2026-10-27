@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-28",
   "date_timezone": "Asia/Shanghai",
-  "generated_at_utc": "2026-10-24T16:56:19+00:00",
-  "version": "1.2.0",
+  "generated_at_utc": "2026-10-27T16:41:04+00:00",
+  "version": "1.2.1",
   "python": "3.13.7",
   "system": "Windows",
   "ok": true,
@@ -44,12 +44,12 @@
         "bad_clusters": 0
       },
       "moved_clusters": 137,
-      "content_and_metadata_sha256_before": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
-      "content_and_metadata_sha256_after": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
+      "content_and_metadata_sha256_before": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
+      "content_and_metadata_sha256_after": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
       "preview_byte_identical": true,
       "second_plan_moved_clusters": 0,
-      "in_memory_planning_ms": 20.65,
-      "in_memory_apply_ms": 23.289
+      "in_memory_planning_ms": 22.136,
+      "in_memory_apply_ms": 24.279
     },
     {
       "case": "720KiB geometry",
@@ -87,12 +87,12 @@
         "bad_clusters": 0
       },
       "moved_clusters": 77,
-      "content_and_metadata_sha256_before": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
-      "content_and_metadata_sha256_after": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
+      "content_and_metadata_sha256_before": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
+      "content_and_metadata_sha256_after": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
       "preview_byte_identical": true,
       "second_plan_moved_clusters": 0,
-      "in_memory_planning_ms": 5.896,
-      "in_memory_apply_ms": 9.098
+      "in_memory_planning_ms": 8.628,
+      "in_memory_apply_ms": 10.871
     },
     {
       "case": "bad cluster interleaved",
@@ -130,12 +130,12 @@
         "bad_clusters": 1
       },
       "moved_clusters": 137,
-      "content_and_metadata_sha256_before": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
-      "content_and_metadata_sha256_after": "be7c2f19d8b0061e73a062b1e0f892a950725db3026c87e48c5d7fa0f20469be",
+      "content_and_metadata_sha256_before": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
+      "content_and_metadata_sha256_after": "57d893e391eb1fe6918167e77f1ded328b4debf329b7d63b9b05ac6f28381ed5",
       "preview_byte_identical": true,
       "second_plan_moved_clusters": 0,
-      "in_memory_planning_ms": 20.812,
-      "in_memory_apply_ms": 24.247
+      "in_memory_planning_ms": 19.947,
+      "in_memory_apply_ms": 25.364
     }
   ]
 }

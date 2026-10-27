@@ -1,8 +1,8 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-28",
   "date_timezone": "Asia/Shanghai",
-  "generated_at_utc": "2026-10-24T16:47:29+00:00",
-  "version": "1.2.0",
+  "generated_at_utc": "2026-10-27T16:41:04+00:00",
+  "version": "1.2.1",
   "python": "3.13.7",
   "system": "Windows",
   "library": "pyfatfs 1.1.0",

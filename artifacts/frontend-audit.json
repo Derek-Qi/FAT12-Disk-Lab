@@ -1,31 +1,22 @@
 {
-  "date": "2026-10-25",
-  "date_timezone": "Asia/Shanghai",
-  "generated_at_utc": "2026-10-24T17:02:32+00:00",
-  "version": "1.2.0",
-  "python": "3.13.7",
-  "system": "Windows",
-  "ok": true,
-  "audit": {
-    "auditReportVersion": 2,
-    "vulnerabilities": {},
-    "metadata": {
-      "vulnerabilities": {
-        "info": 0,
-        "low": 0,
-        "moderate": 0,
-        "high": 0,
-        "critical": 0,
-        "total": 0
-      },
-      "dependencies": {
-        "prod": 4,
-        "dev": 45,
-        "optional": 27,
-        "peer": 0,
-        "peerOptional": 0,
-        "total": 48
-      }
+  "auditReportVersion": 2,
+  "vulnerabilities": {},
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "dependencies": {
+      "prod": 4,
+      "dev": 45,
+      "optional": 27,
+      "peer": 0,
+      "peerOptional": 0,
+      "total": 48
     }
   }
 }

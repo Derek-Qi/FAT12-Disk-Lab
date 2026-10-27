@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import base64
 import binascii
+import hashlib
 import json
 import threading
 import webbrowser
@@ -36,20 +37,28 @@ def disk_changes(before: bytes, fs: FAT12) -> dict:
               (len(fs.data),'数据区'))
     count, sectors, regions, samples = 0, set(), {}, []
     run = None
-    for index,(old,new) in enumerate(zip(before,fs.data)):
-        if old == new:
+    # Most edits touch only a handful of sectors. Compare whole sectors in C
+    # before doing Python-level byte work, preserving exact counts and samples.
+    for start in range(0,len(before),512):
+        old_sector,new_sector=before[start:start+512],fs.data[start:start+512]
+        if old_sector == new_sector:
             run = None
             continue
-        count += 1
-        sectors.add(index//512)
-        region = next(name for end,name in bounds if index < end)
-        regions[region] = regions.get(region,0)+1
-        if run is not None and run['offset']+len(run['before']) == index and len(run['before'])<16:
-            run['before'].append(old);run['after'].append(new)
-        elif len(samples)<16:
-            run={'offset':index,'before':[old],'after':[new]};samples.append(run)
-        else:
-            run=None
+        sectors.add(start//512)
+        region = next(name for end,name in bounds if start < end)
+        for offset,(old,new) in enumerate(zip(old_sector,new_sector)):
+            if old == new:
+                run = None
+                continue
+            index=start+offset
+            count += 1
+            regions[region] = regions.get(region,0)+1
+            if run is not None and run['offset']+len(run['before']) == index and len(run['before'])<16:
+                run['before'].append(old);run['after'].append(new)
+            elif len(samples)<16:
+                run={'offset':index,'before':[old],'after':[new]};samples.append(run)
+            else:
+                run=None
     for sample in samples:
         sample['before'] = bytes(sample['before']).hex(' ').upper()
         sample['after'] = bytes(sample['after']).hex(' ').upper()
@@ -132,7 +141,8 @@ def make_handler(fs: FAT12, port: int):
                         except UnicodeDecodeError:
                             content, text = "", False
                         self._json({"entry": entry.to_dict(), "chain": fs.chain(entry.cluster),
-                                    "content": content, "is_text": text, "raw_entry": fs.inspect_entry(path)})
+                                    "content": content, "content_sha256": hashlib.sha256(data).hexdigest(),
+                                    "is_text": text, "raw_entry": fs.inspect_entry(path)})
                     elif parsed.path == '/api/fat-entry':
                         self._json(fs.inspect_fat(int(params.get('cluster', ['2'])[0])))
                     elif parsed.path == "/api/download":
@@ -151,6 +161,9 @@ def make_handler(fs: FAT12, port: int):
                             self.send_error(404)
                         else:
                             super().do_GET()
+            except ConnectionError:
+                # A disconnected client cannot receive an error response.
+                return
             except (FATError, ValueError, OSError) as exc:
                 self._json({"error": str(exc)}, 400)
 
@@ -182,7 +195,17 @@ def make_handler(fs: FAT12, port: int):
                         output = shell.execute(str(body["command"]))
                         cwd = shell.cwd
                     elif route == "/api/write":
-                        fs.write_file(str(body["path"]), str(body["content"]).encode("utf-8"))
+                        path, content = body['path'], body['content']
+                        if not isinstance(path, str) or not isinstance(content, str):
+                            raise FATError('文件路径和内容必须为文本')
+                        if 'expected_content_sha256' in body:
+                            expected = body['expected_content_sha256']
+                            if (not isinstance(expected, str) or len(expected) != 64
+                                    or any(c not in '0123456789abcdef' for c in expected)):
+                                raise FATError('文件内容校验值格式无效')
+                            if hashlib.sha256(fs.read_file(path)).hexdigest() != expected:
+                                raise ConcurrentWriteError('文件已被其他操作修改。请先复制保留编辑内容，再还原并重新打开文件')
+                        fs.write_file(path, content.encode("utf-8"))
                         output = "文件已保存"
                     elif route == "/api/upload":
                         data = base64.b64decode(body["data"], validate=True)
@@ -227,6 +250,8 @@ def make_handler(fs: FAT12, port: int):
                         cwd = "/"
                     self._json({"output": output, "state": snapshot(fs, cwd),
                                 "changes":disk_changes(before, fs)})
+            except ConnectionError:
+                return
             except ConcurrentWriteError as exc:
                 self._json({'error':str(exc)}, 409)
             except (FATError, ValueError, OSError, KeyError, TypeError, binascii.Error) as exc:

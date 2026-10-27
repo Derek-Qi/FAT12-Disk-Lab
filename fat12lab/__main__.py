@@ -5,7 +5,7 @@ import sys
 from pathlib import Path
 
 from .filesystem import FAT12, FATError
-from .shell import Shell
+from .shell import Shell, split_command
 from . import __version__
 
 
@@ -37,14 +37,18 @@ def main() -> int:
             return 0
         shell = Shell(fs)
         commands = list(options.command or [])
-        if options.script:
-            commands += [line.strip() for line in Path(options.script).read_text(encoding="utf-8-sig").splitlines()
+        if options.script is not None:
+            try:
+                source = Path(options.script).read_text(encoding="utf-8-sig")
+            except UnicodeDecodeError as exc:
+                raise FATError('命令脚本必须使用 UTF-8 编码，请转换编码后重试') from exc
+            commands += [line.strip() for line in source.splitlines()
                          if line.strip() and not line.lstrip().startswith("#")]
-        if commands:
+        if options.command is not None or options.script is not None:
             for command in commands:
                 print(f"A:{shell.cwd}> {command}")
                 print(shell.execute(command))
-                if command.strip().lower() == "exit":
+                if [word.lower() for word in split_command(command)] == ['exit']:
                     break
             return 0
         print("FAT12 磁盘实验台。输入 help 查看命令，exit 退出。")
@@ -56,10 +60,10 @@ def main() -> int:
                 break
             try:
                 print(shell.execute(command))
+                if [word.lower() for word in split_command(command)] == ['exit']:
+                    break
             except (FATError, OSError) as exc:
                 print(f"错误：{exc}")
-            if command.strip().lower() == "exit":
-                break
         return 0
     except (FATError, OSError) as exc:
         print(f"错误：{exc}", file=sys.stderr)

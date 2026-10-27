@@ -11,7 +11,7 @@ TOP=('.gitignore','.gitattributes','README.md','README.zh-CN.md','pyproject.toml
 DOCS=('architecture.md','experiments.md','testing.md','portfolio.md')
 TOOLS=('build_wheel.py','browser_cli.py','check_browser.py','check_distribution.py','check_interop.py',
        'check_release.py','compaction_experiment.py','create_demo.py','evidence.py',
-       'package_release.py','public_release.py','verify_project.py')
+       'package_release.py','package_submission.py','public_release.py','verify_project.py')
 RECEIPTS=('test-results.json','test-output.txt','browser-results.json','distribution-results.json',
           'interop-results.json','compaction-results.json','frontend-audit.json')
 SENSITIVE=re.compile(r'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|AKIA[A-Z0-9]{16}|'

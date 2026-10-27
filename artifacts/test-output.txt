@@ -13,6 +13,13 @@ test_shared_shell_analysis_preview_and_apply (test_allocation.AllocationTests.te
 test_stale_preview_is_rejected_without_mutation (test_allocation.AllocationTests.test_stale_preview_is_rejected_without_mutation) ... ok
 test_windows_literal_wrapper_resolves_to_native_executable (test_browser_cli.BrowserCliTests.test_windows_literal_wrapper_resolves_to_native_executable) ... ok
 test_windows_unknown_shell_wrapper_is_refused (test_browser_cli.BrowserCliTests.test_windows_unknown_shell_wrapper_is_refused) ... ok
+test_empty_script_exits_without_consuming_interactive_input (test_cli.CliTests.test_empty_script_exits_without_consuming_interactive_input) ... ok
+test_invalid_script_encoding_reports_error_without_traceback (test_cli.CliTests.test_invalid_script_encoding_reports_error_without_traceback) ... ok
+test_quoted_exit_stops_the_script (test_cli.CliTests.test_quoted_exit_stops_the_script) ... ok
+test_end_marker_follows_logical_directory_chain_across_clusters (test_directory_markers.DirectoryMarkerTests.test_end_marker_follows_logical_directory_chain_across_clusters) ... ok
+test_last_root_slot_does_not_overwrite_the_data_region (test_directory_markers.DirectoryMarkerTests.test_last_root_slot_does_not_overwrite_the_data_region) ... ok
+test_new_entries_do_not_activate_data_after_directory_end (test_directory_markers.DirectoryMarkerTests.test_new_entries_do_not_activate_data_after_directory_end) ... ok
+test_reusing_deleted_slot_preserves_following_active_entries (test_directory_markers.DirectoryMarkerTests.test_reusing_deleted_slot_preserves_following_active_entries) ... ok
 test_naive_receipt_timestamp_is_rejected (test_evidence.EvidenceTests.test_naive_receipt_timestamp_is_rejected) ... ok
 test_receipt_date_uses_client_timezone_and_keeps_utc_timestamp (test_evidence.EvidenceTests.test_receipt_date_uses_client_timezone_and_keeps_utc_timestamp) ... ok
 test_advisory_chs_fields_do_not_change_sector_offsets (test_filesystem.FilesystemTests.test_advisory_chs_fields_do_not_change_sector_offsets) ... ok
@@ -41,6 +48,7 @@ test_move_current_directory_and_ancestor_delete (test_filesystem.ShellTests.test
 test_touch_preserves_existing_and_binary_type_rejects (test_filesystem.ShellTests.test_touch_preserves_existing_and_binary_type_rejects) ... ok
 test_720kb_cross_cluster_io_and_directory_extension (test_layout_inspection.LayoutInspectionTests.test_720kb_cross_cluster_io_and_directory_extension) ... ok
 test_diff_counts_match_independent_byte_comparison (test_layout_inspection.LayoutInspectionTests.test_diff_counts_match_independent_byte_comparison) ... ok
+test_diff_samples_cross_sector_boundaries_and_remain_bounded (test_layout_inspection.LayoutInspectionTests.test_diff_samples_cross_sector_boundaries_and_remain_bounded) ... ok
 test_exact_directory_and_fat_decode (test_layout_inspection.LayoutInspectionTests.test_exact_directory_and_fat_decode) ... ok
 test_format_preserves_loaded_geometry_and_media (test_layout_inspection.LayoutInspectionTests.test_format_preserves_loaded_geometry_and_media) ... ok
 test_geometry_and_bytes_survive_failed_write (test_layout_inspection.LayoutInspectionTests.test_geometry_and_bytes_survive_failed_write) ... ok
@@ -54,32 +62,42 @@ test_literal_backslashes_and_escaped_quotes_in_text (test_regressions.Regression
 test_same_size_layout_replacement_is_explicit (test_regressions.RegressionTests.test_same_size_layout_replacement_is_explicit) ... ok
 test_unquoted_host_path_import (test_regressions.RegressionTests.test_unquoted_host_path_import) ... ok
 test_unquoted_windows_image_path (test_regressions.RegressionTests.test_unquoted_windows_image_path) ... ok
-test_allocation_preview_apply_and_stale_plan_http (test_server.APITests.test_allocation_preview_apply_and_stale_plan_http) ... 127.0.0.1 - - [25/Oct/2026 10:50:40] "POST /api/defragment HTTP/1.1" 400 -
+test_release_rejects_successful_receipts_from_another_version (test_release_guards.ReleaseGuardTests.test_release_rejects_successful_receipts_from_another_version) ... ok
+test_release_requires_the_current_versions_wheel (test_release_guards.ReleaseGuardTests.test_release_requires_the_current_versions_wheel) ... ok
+test_allocation_preview_apply_and_stale_plan_http (test_server.APITests.test_allocation_preview_apply_and_stale_plan_http) ... 127.0.0.1 - - [28/Oct/2026 00:41:11] "POST /api/defragment HTTP/1.1" 400 -
 ok
 test_binary_upload_and_sector (test_server.APITests.test_binary_upload_and_sector) ... ok
 test_command_write_read_download_and_persistence (test_server.APITests.test_command_write_read_download_and_persistence) ... ok
 test_decoded_entry_fat_and_readonly_byte_diff (test_server.APITests.test_decoded_entry_fat_and_readonly_byte_diff) ... ok
+test_disconnected_client_does_not_trigger_a_second_error_response (test_server.APITests.test_disconnected_client_does_not_trigger_a_second_error_response) ... ok
+test_editor_digest_matches_download_and_valid_save_succeeds (test_server.APITests.test_editor_digest_matches_download_and_valid_save_succeeds) ... ok
 test_mount_720kb_updates_geometry_and_persisted_image (test_server.APITests.test_mount_720kb_updates_geometry_and_persisted_image) ... ok
-test_mount_invalid_is_transactional (test_server.APITests.test_mount_invalid_is_transactional) ... 127.0.0.1 - - [25/Oct/2026 10:50:42] "POST /api/mount HTTP/1.1" 400 -
+test_mount_invalid_is_transactional (test_server.APITests.test_mount_invalid_is_transactional) ... 127.0.0.1 - - [28/Oct/2026 00:41:11] "POST /api/mount HTTP/1.1" 400 -
 ok
-test_mount_save_failure_restores_geometry_and_image (test_server.APITests.test_mount_save_failure_restores_geometry_and_image) ... 127.0.0.1 - - [25/Oct/2026 10:50:42] "POST /api/mount HTTP/1.1" 400 -
+test_mount_save_failure_restores_geometry_and_image (test_server.APITests.test_mount_save_failure_restores_geometry_and_image) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/mount HTTP/1.1" 400 -
 ok
-test_origin_host_content_type_and_invalid_requests (test_server.APITests.test_origin_host_content_type_and_invalid_requests) ... 127.0.0.1 - - [25/Oct/2026 10:50:42] "GET /api/state HTTP/1.1" 403 -
-127.0.0.1 - - [25/Oct/2026 10:50:42] "GET /api/state HTTP/1.1" 403 -
-127.0.0.1 - - [25/Oct/2026 10:50:42] "POST /api/command HTTP/1.1" 400 -
-127.0.0.1 - - [25/Oct/2026 10:50:42] "GET /api/missing HTTP/1.1" 404 -
-127.0.0.1 - - [25/Oct/2026 10:50:42] "GET /api/sector?index=9999 HTTP/1.1" 400 -
-127.0.0.1 - - [25/Oct/2026 10:50:42] "POST /api/command HTTP/1.1" 400 -
+test_origin_host_content_type_and_invalid_requests (test_server.APITests.test_origin_host_content_type_and_invalid_requests) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "GET /api/state HTTP/1.1" 403 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "GET /api/state HTTP/1.1" 403 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/command HTTP/1.1" 400 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "GET /api/missing HTTP/1.1" 404 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "GET /api/sector?index=9999 HTTP/1.1" 400 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/command HTTP/1.1" 400 -
 ok
 test_parallel_mutations_are_serialized (test_server.APITests.test_parallel_mutations_are_serialized) ... ok
-test_readonly_http_allocation_preview_and_apply_refusal (test_server.APITests.test_readonly_http_allocation_preview_and_apply_refusal) ... 127.0.0.1 - - [25/Oct/2026 10:50:43] "POST /api/defragment HTTP/1.1" 400 -
+test_readonly_http_allocation_preview_and_apply_refusal (test_server.APITests.test_readonly_http_allocation_preview_and_apply_refusal) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/defragment HTTP/1.1" 400 -
 ok
-test_readonly_http_state_and_mutation_refusal (test_server.APITests.test_readonly_http_state_and_mutation_refusal) ... 127.0.0.1 - - [25/Oct/2026 10:50:43] "POST /api/write HTTP/1.1" 400 -
-127.0.0.1 - - [25/Oct/2026 10:50:43] "POST /api/snapshot HTTP/1.1" 400 -
+test_readonly_http_state_and_mutation_refusal (test_server.APITests.test_readonly_http_state_and_mutation_refusal) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 400 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/snapshot HTTP/1.1" 400 -
 ok
-test_reload_resolves_external_write_conflict (test_server.APITests.test_reload_resolves_external_write_conflict) ... 127.0.0.1 - - [25/Oct/2026 10:50:43] "POST /api/write HTTP/1.1" 409 -
+test_reload_resolves_external_write_conflict (test_server.APITests.test_reload_resolves_external_write_conflict) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 409 -
 ok
 test_snapshot_and_restore_http_roundtrip (test_server.APITests.test_snapshot_and_restore_http_roundtrip) ... ok
+test_stale_editor_save_is_rejected_without_overwriting_new_content (test_server.APITests.test_stale_editor_save_is_rejected_without_overwriting_new_content) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 409 -
+ok
+test_write_rejects_non_text_content_and_malformed_digest (test_server.APITests.test_write_rejects_non_text_content_and_malformed_digest) ... 127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 400 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 400 -
+127.0.0.1 - - [28/Oct/2026 00:41:12] "POST /api/write HTTP/1.1" 400 -
+ok
 test_corrupt_payload_does_not_change_working_image (test_snapshots.SnapshotTests.test_corrupt_payload_does_not_change_working_image) ... ok
 test_format_creates_recovery_point_for_healthy_disk (test_snapshots.SnapshotTests.test_format_creates_recovery_point_for_healthy_disk) ... ok
 test_identifier_collision_preserves_existing_snapshot (test_snapshots.SnapshotTests.test_identifier_collision_preserves_existing_snapshot) ... ok
@@ -102,8 +120,10 @@ test_readonly_rejects_mutation_and_save (test_storage.StorageTests.test_readonly
 test_reload_exposes_bpb_valid_damage_for_diagnosis_and_recovery (test_storage.StorageTests.test_reload_exposes_bpb_valid_damage_for_diagnosis_and_recovery) ... ok
 test_reload_reads_new_state_and_allows_next_write (test_storage.StorageTests.test_reload_reads_new_state_and_allows_next_write) ... ok
 test_stale_writer_cannot_overwrite_newer_image (test_storage.StorageTests.test_stale_writer_cannot_overwrite_newer_image) ... ok
+test_submission_excludes_execution_notes_and_unselected_tools (test_submission.SubmissionTests.test_submission_excludes_execution_notes_and_unselected_tools) ... ok
+test_submission_includes_runtime_metadata_and_chinese_instructions (test_submission.SubmissionTests.test_submission_includes_runtime_metadata_and_chinese_instructions) ... ok
 
 ----------------------------------------------------------------------
-Ran 91 tests in 17.358s
+Ran 107 tests in 13.312s
 
 OK

@@ -78,7 +78,7 @@ Optional independent validation uses `pyfatfs==1.1.0` and `setuptools<81` in an 
 Download the wheel/source archive from [GitHub Releases](https://github.com/Derek-Qi/FAT12-Disk-Lab/releases). No PyPI publication is claimed.
 
 ```sh
-python -m pip install fat12_disk_lab-1.2.0-py3-none-any.whl
+python -m pip install fat12_disk_lab-1.2.1-py3-none-any.whl
 fat12lab --version
 fat12lab --image my-disk.img --create --web
 ```
@@ -92,7 +92,7 @@ npm run build
 cd ..
 python -m pip install "setuptools>=68" wheel
 python tools/build_wheel.py
-python tools/check_distribution.py artifacts/releases/fat12_disk_lab-1.2.0-py3-none-any.whl
+python tools/check_distribution.py artifacts/releases/fat12_disk_lab-1.2.1-py3-none-any.whl
 ```
 
 The wheel builder stages a fresh source tree and verifies every module/static asset, avoiding stale incremental build output. The clean-install check runs outside the repository. CI covers Windows/Linux, Python 3.11/3.13, frontend builds, installation and browser behavior; consult the actual Actions run rather than inferring a pass from this configuration.

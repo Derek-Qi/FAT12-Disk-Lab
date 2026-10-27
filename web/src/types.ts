@@ -1,7 +1,7 @@
 export type Entry = {name:string; is_dir:boolean; size:number; cluster:number; attr:number; offset:number; modified:string}
 export type BPBField = {offset:number;length:number;field:string;raw:string;value:number}
 export type Disk = {info:{label:string; read_only:boolean; image_bytes:number; free_bytes:number; free_clusters:number; used_clusters:number; total_clusters:number; cluster_bytes:number; total_sectors:number; sectors_per_cluster:number; reserved_sectors:number; root_sector:number; data_sector:number; fat_sectors:number}; bpb:BPBField[]; path:string; entries:Entry[]; fat:number[]; check:{ok:boolean; files:number; directories:number; errors:string[]}}
-export type OpenFile = {entry:Entry; chain:number[]; content:string; is_text:boolean; raw_entry:{raw:string;attr_hex:string;attributes:string[];time_word:string;date_word:string;modified:string}}
+export type OpenFile = {entry:Entry; chain:number[]; content:string; content_sha256:string; is_text:boolean; raw_entry:{raw:string;attr_hex:string;attributes:string[];time_word:string;date_word:string;modified:string}}
 export type FatDetail = {offset:number;raw:string;formula:string;word:number;value:number;data_sector:number}
 export type Changes = {replaced:boolean;reason?:string;before_bytes?:number;after_bytes?:number;changed_bytes:number|null;changed_sector_count?:number;sectors:number[];regions:Record<string,number>;samples:{offset:number;before:string;after:string}[]}
 export type Log = {command:string; output:string; error?:boolean}
