@@ -9,6 +9,8 @@ python tools/verify_project.py
 
 Coverage includes FAT packing and neighbor preservation, allocation/freeing, directory growth and dot references, model-based mutations, invalid geometry, Windows command paths, HTTP guards, real process locks, snapshots, stale previews, compaction preservation and rollback.
 
+The independent 24-bit FAT-pair oracle in `tests/test_fat12_oracle.py` checks all 4096 target values for two pair positions, both parities and three neighbour values, including the cross-sector entry. Its scope and limitations are specified in [the evidence matrix](experiments.md#research-style-evidence-matrix-english).
+
 Two child-process tests pause a real writer immediately before or after `os.replace`, kill it, and reopen the image. Before replacement the previous image must be byte-identical; after replacement the complete new file must be readable. A subsequent write proves the OS lock was released. These are process-crash observations, not abrupt-power-loss guarantees.
 
 Receipts include Python, OS, a UTC timestamp and the client date in Asia/Shanghai. A local Windows receipt does not prove Linux or other Python versions passed; the Actions job results provide that evidence.

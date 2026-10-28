@@ -6,6 +6,8 @@ A byte-level FAT12 image workbench with **allocation analysis, verified compacti
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) · [Reproduce the experiment](docs/experiments.md) · [Testing](docs/testing.md)
 
+The [bilingual evidence matrix](docs/experiments.md#research-style-evidence-matrix-english) separates observed results from limitations and future validation; [portfolio material](docs/portfolio.md#bilingual-application-material--中英文申请素材) describes the work and its AI assistance without claiming unaided authorship.
+
 ![Actual allocation analysis and compaction preview](artifacts/screenshots/allocation-ui.png)
 
 ## What this project demonstrates
