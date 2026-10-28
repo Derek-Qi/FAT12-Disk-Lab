@@ -120,6 +120,10 @@ def main():
             assert 'true' in evaluate("window.dispatchEvent(new Event('beforeunload',{cancelable:true}))")
             browser('wait','--fn','document.documentElement.scrollWidth <= window.innerWidth')
             checks.append('narrow viewport has no page-level horizontal overflow')
+            # Keep recovery independent of the narrow layout check. Its table
+            # may require horizontal scrolling at 680px with Linux font metrics.
+            browser('set','viewport','1280','900')
+            browser('wait','--fn','window.innerWidth === 1280')
             # Simulate an external tool corrupting one FAT while retaining a
             # readable BPB. Refresh must expose the damage and permit recovery.
             damaged=bytearray(image.read_bytes())
