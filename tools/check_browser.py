@@ -85,7 +85,11 @@ def main():
             click('文件管理')
             assert 'UI.TXT' not in browser('get','text','table')
             checks.append('restore removes subsequent file and creates recovery point')
-            click('LAB ›');click('CHAIN.TXT');browser('wait','button[aria-label="查看簇 6 的 FAT 项"]')
+            click('LAB ›')
+            browser('wait','--fn',"!!document.querySelector('[role=alert]') || Array.from(document.querySelectorAll('.files tbody button.file-name')).some(b => b.textContent.trim() === 'CHAIN.TXT' && !b.disabled)")
+            if evaluate("!!document.querySelector('[role=alert]')").strip() == 'true':
+                raise AssertionError('Directory navigation failed: ' + browser('get','text','[role=alert]').strip())
+            click('CHAIN.TXT');browser('wait','button[aria-label="查看簇 6 的 FAT 项"]')
             click('查看簇 6 的 FAT 项');wait('FAT 1 原始字节')
             browser('scroll','up','2000');browser('screenshot',str(ROOT/'artifacts/screenshots/fat.png'))
             click('查看所选簇的数据扇区')
