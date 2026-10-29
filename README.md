@@ -2,6 +2,8 @@
 
 A byte-level FAT12 image workbench with **allocation analysis, verified compaction, guarded persistence, and an inspectable React interface**.
 
+FAT12 is an older floppy-disk filesystem. This educational project lets you explore its disk-image structure, inspect files and see how a compaction plan rearranges stored data. It runs locally and includes checks for the cases documented below.
+
 [![CI](https://github.com/Derek-Qi/FAT12-Disk-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/Derek-Qi/FAT12-Disk-Lab/actions/workflows/ci.yml)
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) · [Reproduce the experiment](docs/experiments.md) · [Testing](docs/testing.md)
