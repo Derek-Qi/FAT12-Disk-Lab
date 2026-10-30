@@ -10,11 +10,11 @@ Implemented guarded persistence using OS process locks, SHA256 version checks, r
 
 中文：通过进程锁、内容版本检测、失败回滚和原子替换保护写盘；使用模型测试、真实子进程终止检查、独立 FAT 实现互通、浏览器操作及干净环境安装验证。
 
-Use current receipts and actual Actions results for counts/environments. Do not describe extent reduction as measured disk acceleration, process-kill checks as power-loss recovery, or this educational project as a production driver/research publication. AI assistance is extensive and disclosed in the README. The public repository contains the curated engineering release, not inherited course materials or the local private history.
+Use current receipts and actual Actions results for counts/environments. Do not describe extent reduction as measured disk acceleration, process-kill checks as power-loss recovery, or this educational project as a production driver/research publication. AI assistance is disclosed in the README. The public repository contains the curated engineering release, not inherited course materials or the local private history.
 
 ## Bilingual application material / 中英文申请素材
 
-The following is a project description, not a statement that the applicant personally authored every component. Tailor it to work you actually understand and performed, retain the AI-assistance disclosure, and use the evidence at the cited revision.
+The author reports completing this project individually, with some AI assistance and copied AI-generated content; AI also assisted later improvements, testing and documentation. Tailor application material to work you actually understand and performed, retain the AI-assistance disclosure, and use the evidence at the cited revision.
 
 **English:** FAT12 Disk Lab is an AI-assisted educational filesystem workbench that manipulates raw FAT12 image structures and exposes a CLI and a browser interface. Its compaction workflow makes preservation and failure boundaries inspectable through a source-bound preview, consistency checks and snapshot protection. Verification includes a finite-value byte-level FAT packing oracle, selected deterministic compaction cases, process-termination tests and interoperability checks with PyFatFS. The documented results are limited to tested cases and do not establish production readiness, power-loss safety or I/O speedup.
 
@@ -22,4 +22,4 @@ The following is a project description, not a statement that the applicant perso
 
 For an application or interview, describe your actual contribution and decisions in your own words; do not claim unaided authorship or independent replication unless those claims are true. See [the bilingual evidence matrix and limitations](experiments.md#research-style-evidence-matrix-english).
 
-申请或面试中，请依据本人实际参与和理解的部分描述贡献；不要将大量 AI 辅助开发说成完全独立编写，也不要声称他人已完成独立复现。证据和局限见[中英文实验说明](experiments.md#学术证据与复现说明中文)。
+申请或面试中，请依据本人实际参与和理解的部分描述贡献，如实说明部分使用的 AI 辅助及复制内容；不要声称他人已完成独立复现。证据和局限见[中英文实验说明](experiments.md#学术证据与复现说明中文)。
