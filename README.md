@@ -8,7 +8,7 @@ FAT12 is an older floppy-disk filesystem. This educational project lets you expl
 
 [中文说明](README.zh-CN.md) · [Architecture](docs/architecture.md) · [Reproduce the experiment](docs/experiments.md) · [Testing](docs/testing.md)
 
-The [bilingual evidence matrix](docs/experiments.md#research-style-evidence-matrix-english) separates observed results from limitations and future validation; [portfolio material](docs/portfolio.md#bilingual-application-material--中英文申请素材) describes the work and its AI assistance without claiming unaided authorship.
+The [bilingual evidence matrix](docs/experiments.md#research-style-evidence-matrix-english) separates observed results from limitations and future validation; [portfolio material](docs/portfolio.md#bilingual-application-material--中英文申请素材) describes the work and its AI assistance.
 
 ![Actual allocation analysis and compaction preview](artifacts/screenshots/allocation-ui.png)
 
@@ -111,6 +111,6 @@ Snapshots are full image/JSON pairs beside the working image, verified by size, 
 
 ## Provenance
 
-This project grew from an operating-systems course exercise. AI assistance was used extensively for design, implementation, tests, review preparation and documentation. Claims here describe inspectable software and recorded checks; they do not imply independent unaided authorship, a research publication, or a production filesystem driver.
+This project grew from an operating-systems course exercise. The author completed the project individually, using AI assistance and incorporating some AI-generated content. AI also assisted later improvements, testing, and documentation. Claims here describe inspectable software and recorded checks; they do not imply a research publication or a production filesystem driver.
 
 The public tree deliberately excludes inherited books/images, old course reports/slides, private work images and local history. Format references and bundled third-party notices are listed in [NOTICE.md](NOTICE.md). No new project-wide open-source licence has been selected.
